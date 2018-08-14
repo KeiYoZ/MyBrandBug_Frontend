@@ -1,0 +1,45 @@
+.side-bar-mobile-container
+  button.sidebar-toggle(@click="toggleSideBar") {{ sideBarToggled ? '>>' : '<<' }}
+  .side-bar-mobile(:class="{ toggled: sideBarToggled }")
+    .profile-container
+      .profile-image-container
+        img.profile-image(:src="accountDetails.image_path", :alt="accountFullName" @click="displayImage")
+      .bio-container
+        bio
+    .navigation-container
+      ul.side-nav
+        router-link(:to="{ name: 'Bug Life Page' }")
+          li.nav-item
+            icon(name="bug")
+            |&nbsp;Bug Life
+        router-link(:to="{ name: 'My Hive Page' }")
+          li.nav-item
+            icon(name="bug")
+            |&nbsp;My Hive
+        router-link(:to="{ name: 'Bugs Page' }")
+          li.nav-item
+            icon(name="bug")
+            |&nbsp;Bugs
+        router-link(:to="{ name: 'Bug Brands Page' }")
+          li.nav-item
+            icon(name="bug")
+            |&nbsp;Bug Brands
+        router-link(:to="{ name: 'Brand Stops Page' }")
+          li.nav-item
+            icon(name="bug")
+            |&nbsp;Brand Stops
+        router-link(:to="{ name: 'Honeys Page' }")
+          li.nav-item
+            icon(name="bug")
+            |&nbsp;Honeys
+    .buttons-container
+      button.button(type="button") Full Version
+      button.button(type="button" @click="logoutWarning") Log-Out
+    sweetModal(:title="accountFullName" ref="profileImage" modal-theme="dark" overlay-theme="dark" width="100%" class="profile-image-modal")
+      img.enlarged-profile-image(:src="accountDetails.image_path", :alt="accountFullName")
+    sweetModal(icon="warning" ref="logoutWarning" class="logout-alert")
+      h1 Do you want to log out?
+      button.logout-alert-button(slot="button" @click="logout") Yes, I want to log out.
+    sweetModal(icon="success" ref="logoutSuccess" class="logout-alert")
+      h1 Successfully logged out!
+      h2 Redirecting to home page...

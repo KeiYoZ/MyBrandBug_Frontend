@@ -1,0 +1,446 @@
+.bug-life-page-container
+  .media-query-laptop-above
+    .bug-life-page
+      width 100%
+      display flex
+      justify-content center
+      align-items flex-start
+      @media screen and (max-width: 1024px)
+        display block
+        margin-top 50px
+      .half
+        width 50%
+        padding 0
+        .banner-container
+          width 100%
+          margin 0 auto
+          height 130px
+          position relative
+          display flex
+          justify-content flex-end
+          align-items center
+          background var(--custom-pink)
+          border 1px solid var(--dark-custom-pink)
+          box-shadow 3px 3px 5px var(--dark-custom-pink)
+          @media screen and (max-width: 1024px)
+            width 100%
+          .content
+            width 60%
+            text-align center
+            color var(--secondary-color)
+          .icon
+            width 100px
+            height 100px
+            display block
+            position absolute
+            left 10%
+            top -10%
+            background var(--secondary-color)
+            .icon-img
+              width 100px
+              height 100px
+              border 1px solid var(--dark-custom-pink)
+              box-shadow 1px 1px 3px var(--dark-custom-pink)
+        .my-bug-life-container
+          width 100%
+          margin 10px auto
+          .my-bug-life
+            width 100%
+            .life
+              width 100%
+              display flex
+              justify-content center
+              align-items center
+              .number-container
+                width 150px
+                height 150px
+                border 5px solid var(--primary-color)
+                box-shadow 1px 1px 3px var(--dark-primary-color)
+                border-radius 50%
+                position relative
+                display flex
+                justify-content center
+                align-items center
+                color var(--primary-color)
+                margin-right 20px
+                text-align center
+                &:after
+                  content: ''
+                  position absolute
+                  right -22px
+                  border-top 18px solid transparent
+                  border-left 20px solid var(--dark-primary-color)
+                  border-right 0 solid var(--dark-primary-color)
+                  border-bottom 18px solid transparent
+                  z-index -1
+                .abbreviation
+                  text-decoration none
+              .dots-container
+                display flex
+                justify-content center
+                align-items center
+                .dots
+                  display flex
+                  justify-content center
+                  align-items center
+                  .dot
+                    display block
+                    border 1px solid var(--dark-primary-color)
+                    margin 0 3px
+              .divider
+                height 100%
+                display flex
+                justify-content center
+                align-items center
+                position relative
+                .line
+                  height 100%
+                  position absolute
+                  display flex
+                  justify-content center
+                  align-items center
+                  border 1px solid var(--dark-primary-color)
+                  height 100%
+                  z-index 0
+                .small-circle
+                  position relative
+                  width 25px
+                  height 25px
+                  border 2px solid var(--dark-primary-color)
+                  border-radius 50%
+                  background var(--secondary-color)
+                  z-index 1
+              .activities
+                width calc(100% - 200px)
+                color var(--primary-color)
+                .dates
+                  border-radius 50%
+        .pollen-container
+          width 60%
+          margin 0 auto
+          .pollen-header
+            display flex
+            justify-content center
+            align-items center
+            background var(--primary-color)
+            color var(--secondary-color)
+            font-family "Lato"
+            width 100%
+            border 1px solid var(--primary-color)
+            padding 10px 0
+          .pollen-body
+            width 100%
+            padding 20px 5%
+            border-width 2px
+            border-style solid
+            -webkit-border-image -webkit-gradient(linear, 0 0, 0 100%, from(#e60000) to (rgba(230, 200, 200, 1))) 1 100%
+            -webkit-border-image -webkit-linear-gradient(#e60000, rgba(230, 200, 200, 1)) 1 100%
+            -moz-border-image -moz-linear-gradient(#e60000, rgba(230, 200, 200, 1)) 1 100%
+            -o-border-image -o-linear-gradient(#e60000, rgba(230, 200, 200, 1)) 1 100%
+            border-image linear-gradient(to bottom, #e60000, rgba(230, 200, 200, 1)) 1 100%
+            .pollen-content
+              width 100%
+              .list-container
+                width 100%
+                position relative
+                font-family "Lato"
+                &:before
+                  content ' '
+                  position absolute
+                  top 0
+                  left 37px
+                  width 5px
+                  height 100%
+                  margin 0
+                  background rgb(230, 0, 0)
+                  background -moz-linear-gradient(top, rgba(230, 0, 0,0) 0%, rgb(230, 0, 0) 8%, rgb(230, 0, 0) 92%, rgba(230, 0, 0,0) 100%)
+                  background -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,87,153,1)), color-stop(100%,rgba(125,185,232,1)))
+                  background -webkit-linear-gradient(top, rgba(230, 0, 0,0) 0%, rgb(230, 0, 0) 8%, rgb(230, 0, 0) 92%, rgba(230, 0, 0,0) 100%)
+                  background -o-linear-gradient(top, rgba(230, 0, 0,0) 0%, rgb(230, 0, 0) 8%, rgb(230, 0, 0) 92%, rgba(230, 0, 0,0) 100%)
+                  background -ms-linear-gradient(top, rgba(230, 0, 0,0) 0%, rgb(230, 0, 0) 8%, rgb(230, 0, 0) 92%, rgba(230, 0, 0,0) 100%)
+                  z-index 0
+                .list
+                  .header
+                    display flex
+                    justify-content center
+                    align-items center
+                    width 100%
+                    .logo-container
+                      width 80px
+                      .logo
+                        display inline-block
+                        position relative
+                        width 80px
+                        height 80px
+                        background var(--secondary-color)
+                        border-radius 50%
+                        z-index 50
+                        &.active
+                          background var(--primary-color)
+                        .image
+                          height 80px
+                          width 80px
+                          border 1px solid var(--dark-primary-color)
+                          border-radius 50%
+                    .counter-container
+                      width 100%
+                      background var(--secondary-color)
+                      border 1px solid var(--dark-primary-color)
+                      color var(--primary-color)
+                      padding 8px 0
+                      text-align center
+                      clip-path polygon(0 0, 0 100%, 90% 100%, 100% 50%, 90% 0)
+                      position relative
+                      z-index 49
+                      margin-left -10px
+                      &.active
+                        color var(--secondary-color)
+                        background var(--primary-color)
+                  .content-container
+                    width 100%
+                    padding 0 20px 0 60px
+                    .stats-container
+                      width 100%
+                      .stat
+                        width 100%
+                        display flex
+                        justify-content space-between
+                        align-items center
+                        border 1px solid var(--dark-primary-color)
+                        border-radius 4px
+                        margin 5px 0
+                        .heading
+                          width 80px
+                          padding 6px
+                          background var(--primary-color)
+                          color var(--secondary-color)
+                          border 1px solid var(--dark-primary-color)
+                        .count
+                          width 100%
+                          padding 6px
+                          text-align right
+  .media-query-tablet-below
+    margin-top 50px
+    .bug-life-page
+      width 100%
+      display flex
+      justify-content center
+      align-items flex-start
+      @media screen and (max-width: 1024px)
+        display block
+        .half
+          width 100%
+          margin 30px 0
+          .pollen-container
+            width 80%
+            margin 0 auto
+            .pollen-header
+              display flex
+              justify-content center
+              align-items center
+              background var(--primary-color)
+              color var(--secondary-color)
+              font-family "Lato"
+              width 100%
+              border 1px solid var(--primary-color)
+              padding 10px 0
+            .pollen-body
+              width 100%
+              padding 20px 5%
+              border-width 2px
+              border-style solid
+              -webkit-border-image -webkit-gradient(linear, 0 0, 0 100%, from(#e60000) to (rgba(230, 200, 200, 1))) 1 100%
+              -webkit-border-image -webkit-linear-gradient(#e60000, rgba(230, 200, 200, 1)) 1 100%
+              -moz-border-image -moz-linear-gradient(#e60000, rgba(230, 200, 200, 1)) 1 100%
+              -o-border-image -o-linear-gradient(#e60000, rgba(230, 200, 200, 1)) 1 100%
+              border-image linear-gradient(to bottom, #e60000, rgba(230, 200, 200, 1)) 1 100%
+              .pollen-content
+                width 100%
+                .list-container
+                  width 100%
+                  position relative
+                  font-family "Lato"
+                  &:before
+                    content ' '
+                    position absolute
+                    top 0
+                    left 37px
+                    width 5px
+                    height 100%
+                    margin 0
+                    background rgb(230, 0, 0)
+                    background -moz-linear-gradient(top, rgba(230, 0, 0,0) 0%, rgb(230, 0, 0) 8%, rgb(230, 0, 0) 92%, rgba(230, 0, 0,0) 100%)
+                    background -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,87,153,1)), color-stop(100%,rgba(125,185,232,1)))
+                    background -webkit-linear-gradient(top, rgba(230, 0, 0,0) 0%, rgb(230, 0, 0) 8%, rgb(230, 0, 0) 92%, rgba(230, 0, 0,0) 100%)
+                    background -o-linear-gradient(top, rgba(230, 0, 0,0) 0%, rgb(230, 0, 0) 8%, rgb(230, 0, 0) 92%, rgba(230, 0, 0,0) 100%)
+                    background -ms-linear-gradient(top, rgba(230, 0, 0,0) 0%, rgb(230, 0, 0) 8%, rgb(230, 0, 0) 92%, rgba(230, 0, 0,0) 100%)
+                    z-index 0
+                  .list
+                    .header
+                      display flex
+                      justify-content center
+                      align-items center
+                      width 100%
+                      .logo-container
+                        width 80px
+                        .logo
+                          display inline-block
+                          position relative
+                          width 80px
+                          height 80px
+                          background var(--secondary-color)
+                          border-radius 50%
+                          z-index 50
+                          &.active
+                            background var(--primary-color)
+                          .image
+                            height 80px
+                            width 80px
+                            border 1px solid var(--dark-primary-color)
+                            border-radius 50%
+                      .counter-container
+                        width 100%
+                        background var(--secondary-color)
+                        border 1px solid var(--dark-primary-color)
+                        color var(--primary-color)
+                        padding 8px 0
+                        text-align center
+                        clip-path polygon(0 0, 0 100%, 90% 100%, 100% 50%, 90% 0)
+                        position relative
+                        z-index 49
+                        margin-left -10px
+                        &.active
+                          color var(--secondary-color)
+                          background var(--primary-color)
+                    .content-container
+                      width 100%
+                      padding 0 20px 0 60px
+                      .stats-container
+                        width 100%
+                        .stat
+                          width 100%
+                          display flex
+                          justify-content space-between
+                          align-items center
+                          border 1px solid var(--dark-primary-color)
+                          border-radius 4px
+                          margin 5px 0
+                          .heading
+                            width 80px
+                            padding 6px
+                            background var(--primary-color)
+                            color var(--secondary-color)
+                            border 1px solid var(--dark-primary-color)
+                          .count
+                            width 100%
+                            padding 6px
+                            text-align right
+          .banner-container
+            width 100%
+            margin 0 auto
+            height 130px
+            position relative
+            display flex
+            justify-content flex-end
+            align-items center
+            background var(--custom-pink)
+            border 1px solid var(--dark-custom-pink)
+            box-shadow 3px 3px 5px var(--dark-custom-pink)
+            @media screen and (max-width: 1024px)
+              width 100%
+            .content
+              width 60%
+              text-align center
+              color var(--secondary-color)
+            .icon
+              width 100px
+              height 100px
+              display block
+              position absolute
+              left 10%
+              top -10%
+              background var(--secondary-color)
+              .icon-img
+                width 100px
+                height 100px
+                border 1px solid var(--dark-custom-pink)
+                box-shadow 1px 1px 3px var(--dark-custom-pink)
+          .my-bug-life-container
+            width 100%
+            margin 10px auto
+            .my-bug-life
+              width 100%
+              .life
+                width 100%
+                display flex
+                justify-content center
+                align-items center
+                padding 5px 0
+                border-bottom 1px solid var(--dark-primary-color)
+                .number-container
+                  width 100px
+                  height 100px
+                  border 5px solid var(--primary-color)
+                  box-shadow 1px 1px 3px var(--dark-primary-color)
+                  border-radius 50%
+                  position relative
+                  display flex
+                  justify-content center
+                  align-items center
+                  color var(--primary-color)
+                  margin-right 20px
+                  text-align center
+                  @media screen and (max-width: 767px)
+                    width 75px !important
+                    height 75px !important
+                  &:after
+                    content: ''
+                    position absolute
+                    right -22px
+                    border-top 18px solid transparent
+                    border-left 20px solid var(--primary-color)
+                    border-right 0 solid var(--primary-color)
+                    border-bottom 18px solid transparent
+                    z-index -1
+                .dots-container
+                  display flex
+                  justify-content center
+                  align-items center
+                  .dots
+                    display flex
+                    justify-content center
+                    align-items center
+                    .dot
+                      display block
+                      border 1px solid var(--dark-primary-color)
+                      margin 0 3px
+                .divider
+                  height 100%
+                  display flex
+                  justify-content center
+                  align-items center
+                  position relative
+                  .line
+                    height 100%
+                    position absolute
+                    display flex
+                    justify-content center
+                    align-items center
+                    border 1px solid var(--dark-primary-color)
+                    height 100%
+                    z-index 0
+                  .small-circle
+                    position relative
+                    width 25px
+                    height 25px
+                    border 2px solid var(--dark-primary-color)
+                    border-radius 50%
+                    background var(--secondary-color)
+                    z-index 1
+                .activities
+                  width calc(100% - 200px)
+                  color var(--primary-color)
+                  .activity
+                    margin 1em 0
+                  .dates
+                    border-radius 50%

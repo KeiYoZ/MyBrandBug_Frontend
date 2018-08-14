@@ -1,0 +1,38 @@
+.create-post-container
+  form.create-post(enctype="multipart/form-data" @submit.prevent="createPost")
+    .create-post-header(v-if="$mq !== 'mobile'")
+      .profile-details
+        .profile-image
+          img(:src="accountDetails.image_path" :alt="accountFullName")
+        .profile-name
+          p {{ accountFullName }}
+      .post-details
+        h3 Create Post
+    .create-post-header(v-else)
+      .profile-details
+        .profile-image
+          img(:src="accountDetails.image_path" :alt="accountFullName")
+        .profile-name
+          h4 Create Post
+          p {{ accountFullName }}
+    .create-post-body
+      .form-input
+        input(type="text" v-model="postData.location" placeholder="Location")
+      .form-input
+        .file-upload
+          label(for="file-upload" class="file-upload-button")
+            p.file-upload-instruction
+              | Upload a Photo/Video
+          span(v-if="fileName" class="file-name") {{ fileName }}
+          input(type="file" @change="processFile($event)" id="file-upload")
+      .form-input
+        textarea(v-model="postData.caption" placeholder="Say something about the brand")
+      .form-input
+        .input-group
+          label #mbb_
+          input(type="text" v-model="postData.hashtag" placeholder="Brand Name")
+    .create-post-footer
+      .form-input
+        input(type="submit" value="Buzz It!")
+  .loading-screen(v-if="isLoading")
+    spinner(size="big" line-fg-color="#e60000" line-bg-color="#ffffff")

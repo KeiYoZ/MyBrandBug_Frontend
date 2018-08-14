@@ -1,0 +1,78 @@
+.bugs-page-container
+  .media-query-laptop-above(v-if="$mq !== 'mobile' && $mq !== 'tablet'")
+    .bugs-page
+      .half
+        #left
+          .banner-container
+            .content
+              h2 Bugs
+              h4 {{ bugsCount }}
+            .icon
+              img.icon-img(src="@/assets/images/wc-icon-kingbeetle-2.png" v-if="accountDetails.gender === 'male'")
+              img.icon-img(src="@/assets/images/wc-icon-queenbee-2.png" v-else-if="accountDetails.gender === 'female'")
+              img.icon-img(src="@/assets/images/wc-icon-butterfly-2.png" v-else)
+          .search-component
+            input.filter-text(type="text" placeholder="Search Bugs" v-model="filter")
+          .my-hive-list-container
+            .my-hive-list
+              .my-hive(v-for="letter in bugsLetters")
+                .letter-container-container
+                  .letter-container
+                    h2.letter {{ letter }}
+                .small-circle-container
+                  .line
+                  .small-circle
+                .dots-container
+                  .dots
+                    .dot
+                    .dot
+                    .dot
+                    .dot
+                    .dot
+                .names
+                  .name(v-for="name in bugs" :key="name.id" v-if="name.attributes.full_name.charAt(0) === letter")
+                    a(:href="'#' + name.id" @click="nameSelected(name)" :class="{ selected: selectedId === name.id}") {{ name.attributes.full_name.charAt(0) === letter ? name.attributes.full_name : null }}
+      .half
+        #right(v-if="selectedId !== 0")
+          .profile-banner-container
+            .buttons
+              button.button(type="button" @click="hive('ye')") Hive
+              button.button#pest(type="button" @click="pest('o')") Pest
+            .profileBanner
+              profileBanner(:userDetails="selectedUser")
+          .divider
+          .userPostsContainer
+            userPostsContainer
+  .media-query-tablet-below(v-if="$mq === 'mobile' || $mq === 'tablet'")
+    .whole
+      .banner-container
+        .content
+          h2 Bugs
+          h4 {{ bugsCount }}
+        .icon
+          img.icon-img(src="@/assets/images/wc-icon-queenbee-2.png")
+      form.search-component(@submit.prevent="filterBugs")
+        input.filter-text(type="text" placeholder="Search Bugs" v-model="filter")
+        button.filter-button(type="submit")
+          icon(name="search")
+      .my-hive-list-container
+        .my-hive-list
+          .my-hive(v-for="letter in bugsLetters")
+            .letter-container-container
+              .letter-container
+                h2.letter {{ letter }}
+            .small-circle-container
+              .line
+              .small-circle
+            .dots-container
+              .dots
+                .dot
+                .dot
+                .dot
+                .dot
+                .dot
+            .names
+              .name(v-for="name in bugs" :key="name.id" v-if="name.attributes.full_name.charAt(0) === letter")
+                a(:href="'#id=' + name.id" @click="nameSelected(name)" :class="{ selected: selectedId === name.id }") {{ name.attributes.full_name.charAt(0) === letter ? name.attributes.full_name : null }}
+  .singleProfileModal
+    singleProfileModal(:userDetails="selectedUser")

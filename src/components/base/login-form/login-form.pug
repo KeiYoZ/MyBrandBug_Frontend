@@ -1,0 +1,26 @@
+form.login-form(@submit.prevent="login")
+  .loading-screen(v-if="isLoading")
+    spinner(size="huge" line-fg-color="#e60000" line-bg-color="#ffffff")
+  .form(:class="{ loading: isLoading }")
+    h1 Sign In
+    .form-group
+      input.form-input(type="email" placeholder="Email Address" v-model="loginFormFields.email")
+    p.form-error(v-for="error in loginFormErrors.email") {{ error }}
+    .form-group
+      input.form-input(type="password" placeholder="Password" v-model="loginFormFields.password")
+    p.form-error(v-for="error in loginFormErrors.password") {{ error }}
+    .form-group
+      .forgot-password-container
+        router-link.forgot-password(:to="{ name: 'Forgot Password Page' }") Forgot your password?
+    .form-group
+      .remember-me-form-container
+        input(type="checkbox", name="rememberMe" id="rememberMe" class="remember-me-checkbox")
+        label(for="rememberMe")
+        label.caption(for="rememberMe") Remember me
+    .form-group
+      button(type="submit" class="submit") Sign In
+  sweetModal(icon="success" ref="loginSuccess" class="login-alert")
+    h1 Login Success
+    h2 Redirecting to Home Page...
+  sweetModal(icon="warning" ref="loginFailed" class="login-alert")
+    h2 {{ errorMessage }}

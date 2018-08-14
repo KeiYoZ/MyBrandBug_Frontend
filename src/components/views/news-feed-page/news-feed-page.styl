@@ -1,0 +1,153 @@
+.news-feed-page
+  .media-query-laptop-above
+    width 100%
+    height calc(100vh - 150px)
+    max-height calc(100vh - 150px)
+    display flex
+    justify-content center
+    align-items center
+    .svg-ref
+      display none
+    .half
+      width 50%
+      height inherit
+      #left
+      #right
+        display block
+        width 100%
+        height inherit
+        .content-container
+          height inherit
+          overflow-x hidden
+          overflow-y auto
+          .createPost
+            width 100%
+          .content
+            width 80%
+            margin 0px auto
+            height inherit
+            .tabs-container
+              .tabs
+                width 100%
+                padding 0
+                display flex
+                justify-content space-between
+                list-style-type none
+                margin 0px
+                .tab-item
+                  width 100%
+                  color var(--secondary-color)
+                  text-align center
+                  font-family "Lato"
+                  position relative
+                  cursor pointer
+                  &.active
+                    .item
+                      fill var(--dark-primary-color)
+                  &:last-child
+                    &:after
+                      content ''
+                      position absolute
+                      color var(--custom-green)
+                      bottom 0
+                      right -39px
+                      padding 20px
+                      background var(--secondary-color)
+                  .item-text
+                    position absolute
+                    width 100%
+                    height 100%
+                    display flex
+                    justify-content center
+                    align-items center
+                    color var(--secondary-color)
+                  .item
+                    fill var(--primary-color)
+                    width 120%
+            .tab-content-container
+              width 100%
+              border-top 2px solid var(--dark-primary-color)
+              margin-top -3px
+              .tab-content
+                height inherit
+                border-width 2px
+                border-style solid
+                border-color var(--dark-primary-color)
+                border-image linear-gradient(180deg, #e60000, #e6c8c8) 1 100%
+                .tab-component-container
+                  width 90%
+                  margin 20px auto 0
+        .posts-container
+          width 100%
+  .media-query-tablet-below
+    width 100%
+    height 600px
+    display flex
+    justify-content center
+    align-items center
+    margin-top 50px
+    .svg-ref
+      display none
+    .whole
+      width 100%
+      display block
+      height inherit
+      .content-container
+        height inherit
+        overflow-x hidden
+        overflow-y auto
+        .content
+          width 100%
+          margin 0 auto
+          height inherit
+          .tabs-container
+            .tabs
+              width 100%
+              padding 0
+              display flex
+              justify-content space-between
+              list-style-type none
+              margin 0
+              .tab-item
+                width 100%
+                color var(--secondary-color)
+                text-align center
+                font-family "Lato"
+                position relative
+                cursor pointer
+                &.active
+                  .item
+                    fill var(--dark-primary-color)
+                &:last-child
+                  &:after
+                    content ''
+                    position absolute
+                    color var(--custom-green)
+                    bottom 0
+                    right -50px
+                    padding 25px
+                    background var(--secondary-color)
+                .item-text
+                  position absolute
+                  width 100%
+                  height 100%
+                  display flex
+                  justify-content center
+                  align-items center
+                  color var(--secondary-color)
+                .item
+                  fill var(--primary-color)
+                  width 120%
+          .tab-content-container
+            width 100%
+            border-top 2px solid var(--dark-primary-color)
+            margin-top -3px
+            .tab-content
+              height inherit 
+              border-width 2px
+              border-style solid
+              border-color var(--dark-primary-color)
+              border-image linear-gradient(180deg, #e60000, #e6c8c8) 1 100%
+              .tab-component-container
+                width 90%
+                margin 20px auto 0

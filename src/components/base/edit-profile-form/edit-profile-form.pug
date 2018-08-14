@@ -1,0 +1,35 @@
+form.edit-profile-form(@submit.prevent="updateProfile")
+  .loading-screen(v-if="isLoading")
+    spinner(size="big" line-fg-color="#e60000" line-bg-color="#ffffff")
+  h1 Edit Profile
+  .form
+    .form-group
+      //- input.form-input(type="text" placeholder="First Name" :value="accountDetails.fname" @input="formData.fname = $event.target.value")
+      input.form-input(type="text" :placeholder="accountDetails.fname" v-model="formData.fname")
+    p.form-error(v-for="error in formErrors.fname") {{ error }}
+    .form-group
+      input.form-input(type="text" :placeholder="accountDetails.lname" v-model="formData.lname")
+    p.form-error(v-for="error in formErrors.lname") {{ error }}
+    .form-group
+      label.label-for-input(for="birthday") Birthday
+      flatPickr.form-input(type="text" :placeholder="moment(accountDetails.birthday)" v-model="formData.birthday" :config="config")
+    p.form-error(v-for="error in formErrors.birthday") {{ error }}
+    .form-group
+      input.form-input(type="text" placeholder="Affiliation / Company / Institution" v-model="formData.affiliation")
+    p.form-error(v-for="error in formErrors.affiliation") {{ error }}
+    .form-group
+      input.form-input(type="text" placeholder="Occupation" v-model="formData.occupation")
+    p.form-error(v-for="error in formErrors.occupation") {{ error }}
+    .form-group
+      input.form-input(type="text" placeholder="Country" v-model="formData.country")
+    p.form-error(v-for="error in formErrors.country") {{ error }}
+    .form-group
+      input.form-input(type="text" placeholder="State" v-model="formData.state")
+    p.form-error(v-for="error in formErrors.state") {{ error }}
+    .form-group
+      textarea.form-input#summary(cols="30" rows="10" v-model="formData.summary" placeholder="Summary")
+    p.form-error(v-for="error in formErrors.summary") {{ error }}
+    .form-group
+      button(type="submit" class="submit") Update Profile
+  sweetModal(icon="success" ref="updateProfileSuccess" class="update-profile-alert")
+    h1 Profile Updated!

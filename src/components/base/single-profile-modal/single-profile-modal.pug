@@ -1,0 +1,15 @@
+.single-profile-modal-container(:class="{ closed: isClosed }")
+  .single-profile-modal
+    .single-profile-header
+      .buttons
+        button.button(type="button" @click="hive" v-if="currentRoute === 'Bugs Page'") Hive
+        button.button(type="button" @click="bugs" v-else) Bugs
+        button.button#pest(type="button" @click="pest") Pest
+    .single-profile-body
+      .profileBanner
+        profileBanner(:userDetails="userDetails")
+      .divider
+      .userPostsContainer
+        userPostsContainer
+    .single-profile-footer
+      button.close(type="button" @click="modalClose") Close

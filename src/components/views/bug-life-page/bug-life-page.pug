@@ -1,0 +1,227 @@
+.bug-life-page-container
+  .media-query-laptop-above(v-if="$mq !== 'mobile' && $mq !== 'tablet'")
+    .bug-life-page
+      .half
+        .banner-container
+          .content
+            h2 My Bug Life
+          .icon
+            img.icon-img(src="@/assets/images/wc-icon-kingbeetle-2.png" v-if="accountDetails.gender === 'male'")
+            img.icon-img(src="@/assets/images/wc-icon-queenbee-2.png" v-else-if="accountDetails.gender === 'female'")
+            img.icon-img(src="@/assets/images/wc-icon-butterfly-2.png" v-else)
+        .my-bug-life-container
+          .my-bug-life
+            .life(v-for="(date, key) in myBugLife")
+              .number-container
+                abbr.abbreviation(:title="dateText(key)")
+                  h3 {{ shortDate(key) }}
+              .divider
+                .line
+                .small-circle
+              .dots-container
+                .dots
+                  .dot
+                  .dot
+                  .dot
+                  .dot
+                  .dot
+                .line
+                .small-circle
+              .activities
+                .activity(v-for="activity in date")
+                  p {{ activity.attributes.activity }}
+      .half
+        .pollen-container
+          .pollen-header
+            h4.pollen-header-text Pollen
+          .pollen-body
+            .pollen-content
+              .list-container
+                .list
+                  .header
+                    .logo-container
+                      .logo(:class="{ active: pollenTotal < 250000 }")
+                        .image-container(v-if="pollenTotal < 250000")
+                          img.image(src="@/assets/images/wc-icon-kingbeetle-white.png" v-if="accountDetails.gender === 'male'")
+                          img.image(src="@/assets/images/wc-icon-queenbee-white.png" v-else-if="accountDetails.gender === 'female'")
+                          img.image(src="@/assets/images/wc-icon-butterfly-white.png" v-else)
+                        .image-container(v-else)
+                          img.image(src="@/assets/images/wc-icon-kingbeetle-2.png" v-if="accountDetails.gender === 'male'")
+                          img.image(src="@/assets/images/wc-icon-queenbee-2.png" v-else-if="accountDetails.gender === 'female'")
+                          img.image(src="@/assets/images/wc-icon-butterfly-2.png" v-else)
+                    .counter-container(:class="{ active: pollenTotal < 250000 }")
+                      h3 {{ numeral(pollenTotal) }}
+                  .content-container(v-if="pollenTotal < 250000")
+                    .stats-container
+                      .stat
+                        h4.heading Bite
+                        h4.count {{ numeral(pollen.bites) }}
+                      .stat
+                        h4.heading Sting
+                        h4.count {{ numeral(pollen.stings) }}
+                      .stat
+                        h4.heading Buzz
+                        h4.count {{ numeral(pollen.buzzes) }}
+                .list
+                  .header
+                    .logo-container
+                      .logo(:class="{ active: pollenTotal > 250000 && pollenTotal < 500000 }")
+                        .image-container(v-if="pollenTotal > 250000 && pollenTotal < 500000")
+                          img.image(src="@/assets/images/wc-icon-kingbeetle-white.png" v-if="accountDetails.gender === 'male'")
+                          img.image(src="@/assets/images/wc-icon-queenbee-white.png" v-else-if="accountDetails.gender === 'female'")
+                          img.image(src="@/assets/images/wc-icon-butterfly-white.png" v-else)
+                        .image-container(v-else)
+                          img.image(src="@/assets/images/wc-icon-kingbeetle-2.png" v-if="accountDetails.gender === 'male'")
+                          img.image(src="@/assets/images/wc-icon-queenbee-2.png" v-else-if="accountDetails.gender === 'female'")
+                          img.image(src="@/assets/images/wc-icon-butterfly-2.png" v-else)
+                    .counter-container(:class="{ active: pollenTotal > 250000 && pollenTotal < 500000 }")
+                      h3 {{ pollenTotal > 250000 ? numeral(pollenTotal) : numeral(250000) }}
+                  .content-container(v-if="pollenTotal > 250000 && pollenTotal < 500000")
+                    .stats-container
+                      .stat
+                        h4.heading Bite
+                        h4.count {{ numeral(pollen.bites) }}
+                      .stat
+                        h4.heading Sting
+                        h4.count {{ numeral(pollen.stings) }}
+                      .stat
+                        h4.heading Buzz
+                        h4.count {{ numeral(pollen.buzzes) }}
+                .list
+                  .header
+                    .logo-container
+                      .logo(:class="{ active: pollenTotal > 500000 }")
+                        .image-container(v-if="pollenTotal > 500000")
+                          img.image(src="@/assets/images/wc-icon-kingbeetle-white.png" v-if="accountDetails.gender === 'male'")
+                          img.image(src="@/assets/images/wc-icon-queenbee-white.png" v-else-if="accountDetails.gender === 'female'")
+                          img.image(src="@/assets/images/wc-icon-butterfly-white.png" v-else)
+                        .image-container(v-else)
+                          img.image(src="@/assets/images/wc-icon-kingbeetle-2.png" v-if="accountDetails.gender === 'male'")
+                          img.image(src="@/assets/images/wc-icon-queenbee-2.png" v-else-if="accountDetails.gender === 'female'")
+                          img.image(src="@/assets/images/wc-icon-butterfly-2.png" v-else)
+                    .counter-container(:class="{ active: pollenTotal > 500000 }")
+                      h3 {{ pollenTotal > 500000 ? numeral(pollenTotal) : numeral(500000) }}
+                  .content-container(v-if="pollenTotal > 500000")
+                    .stats-container
+                      .stat
+                        h4.heading Bite
+                        h4.count {{ numeral(pollen.bites) }}
+                      .stat
+                        h4.heading Sting
+                        h4.count {{ numeral(pollen.stings) }}
+                      .stat
+                        h4.heading Buzz
+                        h4.count {{ numeral(pollen.buzzes) }}
+  .media-query-tablet-below(v-if="$mq === 'mobile' || $mq === 'tablet'")
+    .bug-life-page
+      .half
+        .pollen-container
+          .pollen-header
+            h4.pollen-header-text Pollen
+          .pollen-body
+            .pollen-content
+              .list-container
+                .list
+                  .header
+                    .logo-container
+                      .logo(:class="{ active: pollenTotal < 250000 }")
+                        .image-container(v-if="pollenTotal < 250000")
+                          img.image(src="@/assets/images/wc-icon-kingbeetle-white.png" v-if="accountDetails.gender === 'male'")
+                          img.image(src="@/assets/images/wc-icon-queenbee-white.png" v-else-if="accountDetails.gender === 'female'")
+                          img.image(src="@/assets/images/wc-icon-butterfly-white.png" v-else)
+                        .image-container(v-else)
+                          img.image(src="@/assets/images/wc-icon-kingbeetle-2.png" v-if="accountDetails.gender === 'male'")
+                          img.image(src="@/assets/images/wc-icon-queenbee-2.png" v-else-if="accountDetails.gender === 'female'")
+                          img.image(src="@/assets/images/wc-icon-butterfly-2.png" v-else)
+                    .counter-container(:class="{ active: pollenTotal < 250000 }")
+                      h3 {{ numeral(pollenTotal) }}
+                  .content-container(v-if="pollenTotal < 250000")
+                    .stats-container
+                      .stat
+                        h4.heading Bite
+                        h4.count {{ numeral(pollen.bites) }}
+                      .stat
+                        h4.heading Sting
+                        h4.count {{ numeral(pollen.stings) }}
+                      .stat
+                        h4.heading Buzz
+                        h4.count {{ numeral(pollen.buzzes) }}
+                .list
+                  .header
+                    .logo-container
+                      .logo(:class="{ active: pollenTotal > 250000 && pollenTotal < 500000 }")
+                        .image-container(v-if="pollenTotal > 250000 && pollenTotal < 500000")
+                          img.image(src="@/assets/images/wc-icon-kingbeetle-white.png" v-if="accountDetails.gender === 'male'")
+                          img.image(src="@/assets/images/wc-icon-queenbee-white.png" v-else-if="accountDetails.gender === 'female'")
+                          img.image(src="@/assets/images/wc-icon-butterfly-white.png" v-else)
+                        .image-container(v-else)
+                          img.image(src="@/assets/images/wc-icon-kingbeetle-2.png" v-if="accountDetails.gender === 'male'")
+                          img.image(src="@/assets/images/wc-icon-queenbee-2.png" v-else-if="accountDetails.gender === 'female'")
+                          img.image(src="@/assets/images/wc-icon-butterfly-2.png" v-else)
+                    .counter-container(:class="{ active: pollenTotal > 250000 && pollenTotal < 500000 }")
+                      h3 {{ pollenTotal > 250000 ? numeral(pollenTotal) : numeral(250000) }}
+                  .content-container(v-if="pollenTotal > 250000 && pollenTotal < 500000")
+                    .stats-container
+                      .stat
+                        h4.heading Bite
+                        h4.count {{ numeral(pollen.bites) }}
+                      .stat
+                        h4.heading Sting
+                        h4.count {{ numeral(pollen.stings) }}
+                      .stat
+                        h4.heading Buzz
+                        h4.count {{ numeral(pollen.buzzes) }}
+                .list
+                  .header
+                    .logo-container
+                      .logo(:class="{ active: pollenTotal > 500000 }")
+                        .image-container(v-if="pollenTotal > 500000")
+                          img.image(src="@/assets/images/wc-icon-kingbeetle-white.png" v-if="accountDetails.gender === 'male'")
+                          img.image(src="@/assets/images/wc-icon-queenbee-white.png" v-else-if="accountDetails.gender === 'female'")
+                          img.image(src="@/assets/images/wc-icon-butterfly-white.png" v-else)
+                        .image-container(v-else)
+                          img.image(src="@/assets/images/wc-icon-kingbeetle-2.png" v-if="accountDetails.gender === 'male'")
+                          img.image(src="@/assets/images/wc-icon-queenbee-2.png" v-else-if="accountDetails.gender === 'female'")
+                          img.image(src="@/assets/images/wc-icon-butterfly-2.png" v-else)
+                    .counter-container(:class="{ active: pollenTotal > 500000 }")
+                      h3 {{ pollenTotal > 500000 ? numeral(pollenTotal) : numeral(500000) }}
+                  .content-container(v-if="pollenTotal > 500000")
+                    .stats-container
+                      .stat
+                        h4.heading Bite
+                        h4.count {{ numeral(pollen.bites) }}
+                      .stat
+                        h4.heading Sting
+                        h4.count {{ numeral(pollen.stings) }}
+                      .stat
+                        h4.heading Buzz
+                        h4.count {{ numeral(pollen.buzzes) }}
+      .half
+        .banner-container
+          .content
+            h2 My Bug Life
+          .icon
+            img.icon-img(src="@/assets/images/wc-icon-kingbeetle-2.png" v-if="accountDetails.gender === 'male'")
+            img.icon-img(src="@/assets/images/wc-icon-queenbee-2.png" v-else-if="accountDetails.gender === 'female'")
+            img.icon-img(src="@/assets/images/wc-icon-butterfly-2.png" v-else)
+        .my-bug-life-container
+          .my-bug-life
+            .life(v-for="(date, key) in myBugLife")
+              .number-container
+                h3(v-if="$mq === 'tablet'") {{ shortDate(key) }}
+                h5(v-else) {{ shortDate(key) }}
+              .divider
+                .line
+                .small-circle
+              .dots-container
+                .dots
+                  .dot
+                  .dot
+                  .dot(v-if="$mq === 'tablet'")
+                  .dot(v-if="$mq === 'tablet'")
+                  .dot(v-if="$mq === 'tablet'")
+                .line
+                .small-circle
+              .activities
+                .activity(v-for="activity in date")
+                  p {{ activity.attributes.activity }}

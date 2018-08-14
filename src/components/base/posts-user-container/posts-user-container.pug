@@ -1,0 +1,4 @@
+.posts-user-container
+  post(v-for="post in singleUserPosts" :key="post.id" :postDetails="post")
+  .empty(v-if="singleUserPosts.length === 0")
+    h2 No posts yet

@@ -1,0 +1,15 @@
+.profile-banner
+  .banner
+    .image
+      img(:src=" userDetails.attributes && userDetails.attributes.image_path ? userDetails.attributes.image_path  : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'", :alt="userDetails.attributes.full_name")
+    .details
+      .name-container
+        h2.name {{ userDetails.attributes.full_name }}
+      .detail
+        #left
+          p {{ userDetails.attributes.occupation || 'Occupation' }}
+          p {{ userDetails.attributes.affiliation || 'Affiliation' }}
+          p {{ userDetails.attributes.state || 'State' }}
+          p {{ userDetails.attributes.country || 'Country' }}
+        #right
+          p {{ userDetails.attributes.summary || 'Summary' }}

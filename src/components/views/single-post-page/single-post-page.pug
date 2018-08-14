@@ -1,0 +1,13 @@
+.single-post-page
+  .media-query-laptop-above(v-if="$mq !== 'mobile' && $mq !== 'tablet'")
+    .post-container(v-if="accessToken")
+      post(:postDetails="singlePost")
+    .post-container(v-else)
+      .empty
+        h1 You need to be logged in to view this content
+  .media-query-tablet-below(v-if="$mq === 'mobile' || $mq === 'tablet'")
+    .post-container(v-if="accessToken")
+      post(:postDetails="singlePost")
+    .post-container(v-else)
+      .empty
+        h1 You need to be logged in to view this content

@@ -1,0 +1,115 @@
+.post
+  hr
+  .post-edit-delete(v-if="ownTimeline")
+    button(type="button" @click="editPost(postDetails)")
+      i.fas.fa-edit
+    button(type="button" @click="showDeleteModal")
+      i.fas.fa-trash-alt
+  .post-header(v-if="$mq !== 'mobile'")
+    .profile-details
+      .profile-image
+        img(:src="postDetails.relationships.user.image_path ? postDetails.relationships.user.image_path  : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'" :alt="postDetails.relationships.user.name")
+      .profile-name
+        p {{ postDetails.relationships.user.name }}
+    .post-details
+      p {{ moment(postDetails.attributes.create_at.date) }}
+      p {{ postDetails.attributes.location}}
+  .post-header(v-else)
+    .profile-details
+      .profile-image
+        img(:src="postDetails.relationships.user.image_path ? postDetails.relationships.user.image_path  : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'" :alt="postDetails.relationships.user.name")
+      .profile-name
+        p {{ postDetails.relationships.user.name }}
+        p {{ moment2(postDetails.attributes.create_at.date) }}
+        p {{ postDetails.attributes.location }}
+  .post-body
+    .post-media-container(v-if="postDetails.attributes.media")
+      video(controls v-if="postDetails.attributes.media.indexOf('mp4') > -1" width="100%")
+        source(:src="postDetails.attributes.media" :alt="postDetails.attributes.caption")
+      img.post-image(v-else :src="postDetails.attributes.media" :alt="postDetails.attributes.caption")
+    .post-empty-image-container(v-else)
+      img.empty-post-image(src="@/assets/images/post-placeholder.jpg" :alt="postDetails.attributes.caption")
+    .post-description-container
+      p.post-description
+        | {{ postDetails.attributes.caption }}
+    .post-hashtag-container
+      p.post-hashtag
+        | #mbb_{{ postDetails.relationships.hashtags.data[0] && postDetails.relationships.hashtags.data[0].attributes.hashtag ? postDetails.relationships.hashtags.data[0].attributes.hashtag : '' }}
+  .post-footer(v-if="$mq !== 'mobile'")
+    .bite-sting-group
+      .bite-post
+        button.action(type="button", @click="bitePost({post_id: postDetails.id, is_bitten: true, is_stinged: false})") Bite
+        span.count {{ numeral(postDetails.relationships.post_options.bites) }}
+      .sting-post
+        button.action(type="button", @click="stingPost({post_id: postDetails.id, is_bitten: false, is_stinged: true})") Sting
+        span.count {{ numeral(postDetails.relationships.post_options.stings) }}
+    .buzz-group
+      .buzz-post-drop-down
+        button.drop-down-button(type="button") Buzz
+        social-sharing(
+          :url="'http://mybrandbug.com/post/'+postDetails.id" 
+          :title="postDetails.attributes.caption"
+          :hashtags="postDetails.relationships.hashtags.data[0] && postDetails.relationships.hashtags.data[0].attributes.hashtag ? postDetails.relationships.hashtags.data[0].attributes.hashtag : ''"
+          inline-template
+          @open="open(postDetails.id)"
+        )
+          .drop-down-content
+            network.social-link(network="facebook") Facebook
+            network.social-link(network="twitter") Twitter
+  .post-footer(v-else)
+    .buttons-group
+      .bite-sting
+        .bite-post
+          button.action(type="button", @click="bitePost({post_id: postDetails.id, is_bitten: true, is_stinged: false})") Bite
+          span.count {{ numeral(postDetails.relationships.post_options.bites) }}
+        .sting-post
+          button.action(type="button", @click="stingPost({post_id: postDetails.id, is_bitten: false, is_stinged: true})") Sting
+          span.count {{ numeral(postDetails.relationships.post_options.stings) }}
+      .buzz-post-mobile
+        button.drop-down-button(type="button" @click="toggleShare") 
+          | Buzz
+          span.icon
+            icon(name="chevron-up" v-if="shareToggled")
+            icon(name="chevron-down" v-else)
+        social-sharing(
+          :url="'http://mybrandbug.com/post/'+postDetails.id" 
+          :title="postDetails.attributes.caption"
+          :hashtags="postDetails.relationships.hashtags.data[0] && postDetails.relationships.hashtags.data[0].attributes.hashtag ? postDetails.relationships.hashtags.data[0].attributes.hashtag : ''"
+          inline-template
+          @open="open(postDetails.id)"
+          v-if="shareToggled"
+        )
+          .drop-down-content
+            network.social-link(network="facebook") Facebook
+            network.social-link(network="twitter") Twitter
+  sweetModal(ref="editPostModal" @close="resetEditedPostObject")
+    div.editForm(v-if="edit")
+      h5 Edit Post
+      .form-input
+        .input-group
+          label Location
+          input(type="text" v-model="editedPost.location")
+      .form-input
+        .file-upload
+          label(for="edit-file-upload" class="file-upload-button")
+            p.file-upload-instruction
+              | Upload a Photo/Video
+          span(v-if="editedFileName" class="file-name") {{ editedFileName }}
+          input(type="file" @change="editUploadedFile($event)" id="edit-file-upload")
+      .form-input
+        .input-group
+          label Caption
+          textarea(v-model="editedPost.caption")
+      .form-input
+        .input-group
+          label #mbb_
+          input(type="text" v-model="editedPost.hashtag")
+      img(:src="imagePreview", :alt="editedPost.caption")
+      .form-input
+        .input-group
+          input(type="submit", value="Update Post" @click.prevent="updatePostAction(postDetails.id)")
+  sweetModal(ref="deletePostModal" icon="error")
+    h5(style="color: red;") Are you sure you want to delete this post?
+      .form-input.delete-modal
+        button(type="button" @click="deletePost(postDetails.id)") Yes
+        button(type="button" @click="closeDeleteModal") No

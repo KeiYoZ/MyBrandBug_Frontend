@@ -1,0 +1,34 @@
+.search-page-container
+  .media-query-laptop-above(v-if="$mq !== 'mobile' && $mq !== 'tablet'")
+    .search-page
+      .search-results
+        .search-results-text
+          h1 Search results for "{{ query }}"
+        .search-results-box(v-if="searchResults.length > 0")
+          .search-result(v-for="result in searchResults")
+            .image-name-group
+              img.search-image(:src="result.attributes.image_path ? result.attributes.image_path : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'", :alt="result.attributes.full_name")
+              h2 {{ result.attributes.full_name }}
+            .action-group
+              button.action(@click="hive(result.id)" v-if="result.attributes.relation_to_current_user !== 'hive'") Hive
+              button.action(@click="bugs(result.id)" v-if="result.attributes.relation_to_current_user !== 'bug'") Bugs
+              button.action.pest(@click="pest(result.id)") Pest
+        .search-results-box(v-else)
+          h2 No results found for {{ query }}
+  .media-query-tablet-below(v-if="$mq === 'mobile' || $mq === 'tablet'")
+    .search-page
+      .search-results
+        .search-results-text
+          h2 Search results for "{{ query }}"
+        .search-results-box(v-if="searchResults.length > 0")
+          .search-result(v-for="result in searchResults")
+            .image-name-group
+              img.search-image(:src="result.attributes.image_path ? result.attributes.image_path : 'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'", :alt="result.attributes.full_name")
+              h3(v-if="$mq === 'tablet'") {{ result.attributes.full_name }}
+              h4(v-if="$mq === 'mobile'") {{ result.attributes.full_name }}
+            .action-group
+              button.action(@click="hive(result.id)" v-if="result.attributes.relation_to_current_user !== 'hive'") Hive
+              button.action(@click="bugs(result.id)" v-if="result.attributes.relation_to_current_user !== 'bug'") Bugs
+              button.action.pest(@click="pest(result.id)") Pest
+        .search-results-box(v-else)
+          h3 No results found for {{ query }}

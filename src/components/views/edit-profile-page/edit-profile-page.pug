@@ -1,0 +1,36 @@
+.edit-profile
+  .media-query-laptop-above(v-if="$mq !== 'mobile' && $mq !== 'tablet'")
+    .divider#left
+      .container
+        .edit-image
+          .image-container
+            img.image(:src="getTemporaryPicture", :alt="accountFullName")
+            input(v-if="hasFileUploaded" type="button" value="X" @click="removeImgPreview(), resetInputFile()" style="position: absolute; top: 0; right: 0;")
+          .button-container
+            label(for="profile-picture-upload" class="file-upload-button")
+              p.file-upload-instruction
+                | Select Image
+            span(v-if="fileName" class="file-name") {{ fileName }}
+            input(type="file", @change="processFile($event)" id="profile-picture-upload")
+        .editProfileForm
+          editProfileForm
+    .divider#right
+      .container
+        .changePassword
+          changePasswordForm
+  .media-query-tablet-below(v-if="$mq === 'mobile' || $mq === 'tablet'")
+    .whole
+      .container
+        .edit-image
+          .image-container
+            img.image(:src="accountDetails.image_path", :alt="accountFullName")
+          .button-container
+            label(for="profile-picture-upload" class="file-upload-button")
+              p.file-upload-instruction
+                | Select Image
+            span(v-if="fileName" class="file-name") {{ fileName }}
+            input(type="file", @change="processFile($event)" id="profile-picture-upload")
+        .editProfileForm
+          editProfileForm
+        .changePasswordForm
+          changePasswordForm

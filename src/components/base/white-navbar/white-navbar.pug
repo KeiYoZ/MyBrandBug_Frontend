@@ -1,0 +1,26 @@
+.white-navbar
+  .brand-container
+    router-link.route-links(:to="{ name: 'News Feed Page' }")
+      img.brand(src="@/assets/images/brand.png" alt="Home")
+  .navbar
+    .side-bar-container
+      //- sidebar
+    .nav-list
+      .tagline
+        h3 Sharing life's memories with the brands we love
+      .controls(v-if="accessToken")
+        form.search(@submit.prevent="search")
+          input.text-search(type="text" id="search-bugs" placeholder="Search Bugs" v-model="searchText")
+          input.button-search(type="submit" value="Search Bugs")
+        .crickets
+          button.control-button Crickets
+          span.count 3409
+        button.control-button(@click="logoutWarning") Log-Out
+      .controls(v-else)
+        button.control-button(@click="login($mq)") Log-In
+  sweetModal(icon="warning" ref="logoutWarning" class="logout-alert")
+    h1 Do you want to log out?
+    button.logout-alert-button(slot="button" @click="logout") Yes, I want to log out.
+  sweetModal(icon="success" ref="logoutSuccess" class="logout-alert")
+    h1 Successfully logged out!
+    h2 Redirecting to home page...

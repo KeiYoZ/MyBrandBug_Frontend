@@ -1,0 +1,30 @@
+text-overflow(n)
+  -o-text-overflow n
+  text-overflow n
+clip-path(n)
+  -webkit-clip-path n
+  -moz-clip-path n
+  clip-path n
+.ribbon-container
+  position relative
+  .ribbon-outline
+    position absolute
+    left 50px
+    background grey
+    width 200px
+    height 250px
+    clip-path(polygon(0% 0%, 100% 0%, 100% 100%, 50% 75%, 0% 100%))
+    .ribbon
+      width calc(100% - 1px)
+      height calc(100% - 1px)
+      background white
+      clip-path(polygon(0% 0%, 100% 0%, 100% 100%, 50% 75%, 0% 100%))
+      .visible-content
+        height 75%
+        display flex
+        justify-content center
+        align-items center
+        .brand-logo
+          display block
+          width 90%
+          margin 0 auto

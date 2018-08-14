@@ -1,0 +1,4 @@
+.posts-container
+  .loading-screen(v-if="isLoading")
+    spinner(size="big" line-fg-color="#e60000" line-bg-color="#ffffff")
+  post(v-else v-for="post in selfPosts" :key="post.id" :postDetails="post" :ownTimeline="ownTimeline")

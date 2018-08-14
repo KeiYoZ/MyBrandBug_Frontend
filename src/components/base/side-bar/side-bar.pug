@@ -1,0 +1,34 @@
+.side-bar
+  .profile-container
+    .profile-image-container
+      img.profile-image(:src="accountDetails.image_path", :alt="accountFullName" @click="displayImage")
+    .bio-container
+      bio
+  .navigation-container
+    ul.side-nav
+      router-link(:to="{ name: 'Bug Life Page' }")
+        li.nav-item
+          icon(name="bug")
+          |&nbsp;Bug Life
+      router-link(:to="{ name: 'My Hive Page' }")
+        li.nav-item
+          icon(name="bug")
+          |&nbsp;My Hive
+      router-link(:to="{ name: 'Bugs Page' }")
+        li.nav-item
+          icon(name="bug")
+          |&nbsp;Bugs
+      router-link(:to="{ name: 'Bug Brands Page' }")
+        li.nav-item
+          icon(name="bug")
+          |&nbsp;Bug Brands
+      router-link(:to="{ name: 'Brand Stops Page' }")
+        li.nav-item
+          icon(name="bug")
+          |&nbsp;Brand Stops
+      router-link(:to="{ name: 'Honeys Page' }")
+        li.nav-item
+          icon(name="bug")
+          |&nbsp;Honeys
+  sweetModal(:title="accountFullName" ref="profileImage" modal-theme="dark" overlay-theme="dark" width="auto" class="profile-image-modal")
+    img.enlarged-profile-image(:src="accountDetails.image_path", :alt="accountFullName")

@@ -1,0 +1,34 @@
+.landing-page
+  .media-query-laptop-above(v-if="$mq !== 'mobile' && $mq !== 'tablet'")
+    .second-half
+      h1.heading.greetings
+        | Sharing life's memories with the 
+        span.highlight brands
+        |  we love
+      .buttons
+        router-link.button-link(:to="{ name: 'Register Page' }") Sign-up
+        router-link.button-link(:to="{ name: 'Login Page' }") Login
+  .media-query-tablet-below(v-if="$mq === 'mobile' || $mq === 'tablet'")
+    h2.heading.greetings
+      | Sharing life's memories with the 
+      span.highlight brands
+      |  we love
+    form.login-form(@submit.prevent="login")
+      .loading-screen(v-if="isLoading")
+        spinner(size="big" line-fg-color="#e60000" line-bg-color="#ffffff")
+      h1 Log-In
+      .form(:class="{ loading: isLoading }")
+        .form-group
+          input.form-input(type="email" placeholder="Email Address" v-model="loginForm.email")
+        p.form-error(v-for="error in loginFormErrors.email") {{ error }}
+        .form-group
+          input.form-input(type="password" placeholder="Password" v-model="loginForm.password")
+          button(class="submit" type="submit") Log-In
+        p.form-group(v-for="error in loginFormErrors.password") {{ error }}
+    .registrationFormContainer
+      registrationForm.registrationForm
+  sweetModal(class="login-alert" icon="success" ref="loginSuccess")
+    h1 Login Success
+    h2 Redirecting to Home Page...
+  sweetModal(class="login-alert" icon="warning" ref="loginFailed")
+    h2 {{ errorMessage }}

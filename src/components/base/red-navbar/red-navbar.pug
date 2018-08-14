@@ -1,0 +1,33 @@
+.red-navbar
+  .media-query-laptop-above(v-if="$mq !== 'mobile' && $mq !== 'tablet'")
+    ribbon
+    ul.flex-nav
+      router-link.router-link(:to="{ name: 'About' }")
+        li.nav-items About Us
+      router-link.router-link(:to="{ name: 'Faqs' }")
+        li.nav-items FAQs
+      router-link.router-link(:to="{ name: 'User Support' }")
+        li.nav-items User Support
+      router-link.router-link(:to="{ name: 'Brand Solutions' }")
+        li.nav-items Brand Solutions
+  .media-query-tablet-below(v-if="$mq === 'mobile' || $mq === 'tablet'" :class="{ toggled: shown }")
+    button.button-toggle(type="button" @click="toggleNav" v-if="!shown") MyBrandBug
+    ul.flex-nav(v-if="shown")
+      //- router-link.router-link(:to="{ name: 'Landing Page' }")
+      //-   li.nav-items.ribbon-container
+      //-     .ribbon-outline
+      //-       .ribbon
+      //-         .visible-content
+      //-           img.brand-logo(src="@/assets/images/brand.png" alt="MyBrandBug Home")
+      .router-link
+        li.nav-items(@click="toggleNav") MyBrandBug
+      router-link.router-link(:to="{ name: 'Landing Page' }")
+        li.nav-items Home
+      router-link.router-link(:to="{ name: 'About' }")
+        li.nav-items About Us
+      router-link.router-link(:to="{ name: 'Faqs' }")
+        li.nav-items FAQs
+      router-link.router-link(:to="{ name: 'User Support' }")
+        li.nav-items User Support
+      router-link.router-link(:to="{ name: 'Brand Solutions' }")
+        li.nav-items Brand Solutions

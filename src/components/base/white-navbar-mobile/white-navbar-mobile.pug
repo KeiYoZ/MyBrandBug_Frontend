@@ -1,0 +1,17 @@
+.white-navbar-mobile
+  .brand-container
+    router-link.route-links(:to="{ name: 'News Feed Page' }")
+      img.brand(src="@/assets/images/brand.png" alt="Home")
+  .navbar
+    .tagline(v-if="$mq === 'tablet'")
+      h3 Sharing life's memories with the brands we love
+    .tagline(v-if="$mq === 'mobile'")
+      h4 Sharing life's memories with the brands we love
+    .controls(v-if="accessToken")
+      form.search(@submit.prevent="search")
+        input.search-form(type="text" placeholder="Search Bugs" v-model="searchText")
+        button.submit(type="submit") Search Bugs
+      .crickets-container(v-if="1 === 0")
+        button.crickets(type="button") Crickets
+    .controls-2(v-else)
+      button.control-button(@click="login") Log-In

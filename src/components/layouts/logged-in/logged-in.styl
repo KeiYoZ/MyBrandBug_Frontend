@@ -1,0 +1,65 @@
+.logged-in
+  display block
+  position relative
+  .media-query-laptop-above
+    .white-navbar-container
+      position fixed
+      top 0
+      left 0
+      width 100%
+      display flex
+      justify-content center
+      background var(--secondary-color)
+      height 70px
+      z-index 400
+      .whiteNavbar
+        width 1366px
+    .router-view-container
+      position relative
+      width 100%
+      display flex
+      justify-content center
+      .view-container
+        width 1366px
+        margin 0 auto
+        position relative
+        .sideNav
+          position absolute
+          top 70px
+          left 0px
+          width 250px
+        .router-view
+          position absolute
+          top 70px
+          left 250px
+          width calc(1349px - 250px)
+          max-width calc(1349px - 250px)
+          padding 20px 0 0 20px
+  .media-query-tablet-below
+    .white-navbar-container
+      .whiteNavbarMobile
+        display block
+    .router-view-container
+      position relative
+      width 100%
+      display flex
+      justify-content center
+      .view-container
+        width 100%
+        position relative
+        .sideNavMobile
+          position absolute
+          left 0
+          width 80%
+          z-index 55
+          &.toggled
+            z-index 0
+          @media screen and (max-width: 767px)
+            width 100%
+        .router-view
+          position relative
+          width 80%
+          margin 0 auto
+          @media screen and (max-width: 767px)
+            width 100%
+            margin 0

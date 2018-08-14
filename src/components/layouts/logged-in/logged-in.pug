@@ -1,0 +1,22 @@
+.logged-in
+  loadingScreen(v-if="isLoading")
+  .media-query-laptop-above(v-if="$mq !== 'mobile' && $mq !== 'tablet'")
+    .white-navbar-container
+      .whiteNavbar
+        whiteNavbar
+    .router-view-container
+      .view-container
+        .sideNav
+          sideNav(v-if="accessToken")
+        .router-view
+          router-view
+  .media-query-tablet-below(v-if="$mq === 'mobile' || $mq === 'tablet'")
+    .white-navbar-container
+      .whiteNavbarMobile
+        whiteNavbarMobile
+    .router-view-container
+      .view-container
+        .sideNavMobile(:class="{ toggled: sideBarToggled }")
+          sideNavMobile(v-if="accessToken")
+        .router-view
+          router-view

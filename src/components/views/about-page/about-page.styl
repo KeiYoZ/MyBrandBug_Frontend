@@ -1,0 +1,33 @@
+.about-page
+  width 100%
+  display flex
+  justify-content center
+  align-items center
+  .media-query-laptop-above
+    width 100%
+    .about
+      color var(--primary-color)
+      width 50%
+      margin 0px auto
+      h1
+        margin 0 0 10px
+      p
+        color var(--black-color)
+        margin 10px 0
+  .media-query-tablet-below
+    width 100%
+    .heading
+    .greetings
+      width 80%
+      margin 20px auto
+      color var(--primary-color)
+    .about
+      width 60%
+      margin 0px auto
+      @media screen and (max-width: 768px)
+        width 80%
+      h1
+        color var(--primary-color)
+        margin 0 0 10px
+      p
+        margin 10px 0

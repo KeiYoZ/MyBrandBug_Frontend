@@ -1,0 +1,39 @@
+.logged-out-with-bg
+  width 100%
+  // .media-query-laptop-above
+  .red-navbar-container
+    width 100%
+    display flex
+    justify-content center
+    background var(--primary-color)
+    .redNavbar
+      width 1366px
+  .router-view-container
+    width 100%
+    display flex
+    justify-content center
+    background-color #edf0f5
+    margin-bottom 10px
+    .router-view
+      height 700px
+      background-image url(../../../assets/images/home-flipped-2.jpg)
+      background-size contain
+      background-repeat no-repeat
+      background-position center top
+      width 1366px
+      padding 20px 0
+      @media screen and (max-width: 1024px)
+        height unset
+        background-image none
+        width 100%
+        padding 0
+  .footer-container
+    width 100%
+    display flex
+    justify-content center
+    align-items center
+    .footer-component
+      width 1366px
+      text-align center
+  // .media-query-tablet
+    // display block

@@ -1,0 +1,29 @@
+.brand-solutions-page
+  .media-query-laptop-above(v-if="$mq !== 'mobile' && $mq !== 'tablet'")
+    .brand-solutions
+      h1 Brand Solutions
+      p Grow your brand with us! Create a brand page.
+      button Sign Up
+      p For more creative ways to help your brand, you may reach us at the following:
+
+      h2 Sales
+      p sales@mybrandbug.com
+
+      h2 Partnership
+      p investment@mybrandbug.com
+  .media-query-tablet-below(v-if="$mq === 'mobile' || $mq === 'tablet'")
+    h2.heading.greetings
+      | Sharing life's memories with the 
+      span.highlight brands
+      |  we love
+    .brand-solutions
+      h1 Brand Solutions
+      p Grow your brand with us! Create a brand page.
+      button Sign Up
+      p For more creative ways to help your brand, you may reach us at the following:
+
+      h3 Sales
+      p sales@mybrandbug.com
+
+      h3 Partnership
+      p investment@mybrandbug.com

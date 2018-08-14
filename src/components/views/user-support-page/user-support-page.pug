@@ -1,0 +1,19 @@
+.user-support-page
+  .media-query-laptop-above(v-if="$mq !== 'mobile' && $mq !== 'tablet'")
+    .user-support
+      h1 User Support
+      p MyBrandBug is still in its beta stage. We sincerely apologies for that. We hope to improve it in the future!
+      p Should you have any difficulty using our website, kindly send us an email at:
+      p custserve@mybrandbug.com
+      p We would be glad to assist you!
+  .media-query-tablet-below(v-if="$mq === 'mobile' || $mq === 'tablet'")
+    h2.heading.greetings
+      | Sharing life's memories with the 
+      span.highlight brands
+      |  we love
+    .user-support
+      h1 User Support
+      p MyBrandBug is still in its beta stage. We sincerely apologies for that. We hope to improve it in the future!
+      p Should you have any difficulty using our website, kindly send us an email at:
+      p custserve@mybrandbug.com
+      p We would be glad to assist you!

@@ -1,0 +1,11 @@
+.bio
+  router-link(:to="{ name: 'Edit Profile Page' }" tag="h3")
+    | {{ accountFullName }}
+  //- h2
+    //- a(href="#", title="title") {{ accountFullName }}
+  p {{ accountDetails.occupation ? accountDetails.occupation : 'Occupation' }}
+  p {{ accountDetails.affiliation ? accountDetails.affiliation : 'Affiliation / Company / Institution' }}
+  p {{ accountDetails.state ? accountDetails.state : 'State' }}
+  p {{ accountDetails.country ? accountDetails.country : 'Country' }}
+  .summary-details
+    p {{ accountDetails.summary ? accountDetails.summary : 'Summary'}}

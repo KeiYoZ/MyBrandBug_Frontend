@@ -1,0 +1,79 @@
+.news-feed-page
+  .media-query-laptop-above(v-if="$mq !== 'mobile' && $mq !== 'tablet'")
+    svg.svg-ref
+      path#tab-shape(d="M116.486,29.036c-23.582-8-14.821-29-42.018-29h-62.4C5.441,0.036,0,5.376,0,12.003v28.033h122v-11H116.486z")
+    .half
+      #left(v-bar="{ preventParentScroll: true }")
+        .content-container
+          .createPost
+            createPost
+          .posts-container
+            postsContainer
+    .half
+      #right(v-bar="{ preventParentScroll: true }")
+        .content-container
+          .content
+            .tabs-container
+              ul.tabs
+                li.tab-item(@click="hiveTabs" :class="{ active: tab === 'hive' }")
+                  span.item-text Hive
+                  svg.item(viewBox="0 0 122 40")
+                    use(xlink:href="#tab-shape")
+                li.tab-item(@click="bugsTabs" :class="{ active: tab === 'bugs' }")
+                  span.item-text Bugs
+                  svg.item(viewBox="0 0 122 40")
+                    use(xlink:href="#tab-shape")
+                li.tab-item(@click="webTabs" :class="{ active: tab === 'web' }")
+                  span.item-text Web
+                  svg.item(viewBox="0 0 122 40")
+                    use(xlink:href="#tab-shape")
+                //- button.tab-button(@click="hiveTabs" :class="{ active: tab === 'hive' }")
+                //-   li.tab-item Hive
+                //- button.tab-button(@click="bugsTabs" :class="{ active: tab === 'bugs' }")
+                //-   li.tab-item Bugs
+                //- button.tab-button(@click="webTabs" :class="{ active: tab === 'web' }")
+                //-   li.tab-item Web
+            .tab-content-container
+              .tab-content#hive(v-if="tab === 'hive'")
+                .tab-component-container
+                  hivePostsContainer
+              .tab-content#bugs(v-if="tab === 'bugs'")
+                .tab-component-container
+                  bugPostsContainer
+              .tab-content#web(v-if="tab === 'web'")
+                .tab-component-container
+                  webPostsContainer
+  .media-query-tablet-below(v-if="$mq === 'mobile' || $mq === 'tablet'")
+    svg.svg-ref
+      path#tab-shape(d="M116.486,29.036c-23.582-8-14.821-29-42.018-29h-62.4C5.441,0.036,0,5.376,0,12.003v28.033h122v-11H116.486z")
+    .whole
+      .content-container
+        .content
+          .tabs-container
+            ul.tabs
+              li.tab-item(@click="logTabs" :class="{ active: tab === 'logs' }")
+                span.item-text Logs
+                svg.item(viewBox="0 0 122 40")
+                  use(xlink:href="#tab-shape")
+              li.tab-item(@click="hiveTabs" :class="{ active: tab === 'hive' }")
+                span.item-text Hive
+                svg.item(viewBox="0 0 122 40")
+                  use(xlink:href="#tab-shape")
+              li.tab-item(@click="webTabs" :class="{ active: tab === 'web' }")
+                span.item-text Web
+                svg.item(viewBox="0 0 122 40")
+                  use(xlink:href="#tab-shape")
+          .tab-content-container
+            .tab-content#log(v-if="tab === 'logs'")
+              .tab-component-container
+                .createPost
+                  createPost
+                .posts-container
+                  postsContainer
+            .tab-content#hive(v-if="tab === 'hive'")
+              .tab-component-container
+                hivePostsContainer
+            .tab-content#web(v-if="tab === 'web'")
+              .tab-component-container
+                webPostsContainer
+

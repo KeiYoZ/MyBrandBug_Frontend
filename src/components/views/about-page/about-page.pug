@@ -1,0 +1,19 @@
+.about-page
+  .media-query-laptop-above(v-if="$mq !== 'mobile' && $mq !== 'tablet'")
+    .about
+      h1 About Us
+      p Welcome! MyBrandBug is semi-social media platform/site that enables users to post their life's memories using pictures and/or videos of brands they love. Thus, the tagline of the website, "Sharing life's memories with the brands we love."
+      p Why would users post brands? Brands are everywhere! A brand is a representation of a person, product, service, place, or events.
+      p Brands have always been part of our lives! From the stroller, we use as a baby, from the places we visit during our vacations, to the fancy restaurants we celebrated our birthdays. Brands have always been there to share our happiness, struggles, and our achievements!
+      p Brands represents us in so many ways!
+  .media-query-tablet-below(v-if="$mq === 'mobile' || $mq === 'tablet'")
+    h2.heading.greetings
+      | Sharing life's memories with the 
+      span.highlight brands
+      |  we love
+    .about
+      h1 About Us
+      p Welcome! MyBrandBug is semi-social media platform/site that enables users to post their life's memories using pictures and/or videos of brands they love. Thus, the tagline of the website, "Sharing life's memories with the brands we love."
+      p Why would users post brands? Brands are everywhere! A brand is a representation of a person, product, service, place, or events.
+      p Brands have always been part of our lives! From the stroller, we use as a baby, from the places we visit during our vacations, to the fancy restaurants we celebrated our birthdays. Brands have always been there to share our happiness, struggles, and our achievements!
+      p Brands represents us in so many ways!

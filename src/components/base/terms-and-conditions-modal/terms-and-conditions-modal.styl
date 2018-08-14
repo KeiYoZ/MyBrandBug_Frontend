@@ -1,0 +1,50 @@
+.terms-and-conditions-modal-container
+  width 100%
+  height 100vh
+  position fixed
+  left 0
+  top 0
+  background rgba(0, 0, 0, 0.75)
+  z-index 100
+  &.closed
+    display none
+  .terms-and-conditions-modal
+    background var(--secondary-color)
+    color var(--primary-color)
+    font-family "Lato"
+    height 80vh
+    width 600px
+    margin 10vh auto
+    border-radius 4px
+    @media screen and (max-width: 768px)
+      width 90%
+      height 90vh
+      margin 5vh 5%
+  .terms-and-conditions-modal-header
+    height 10vh
+    display flex
+    justify-content center
+    align-items center
+  .terms-and-conditions-modal-body
+    width 100%
+    padding 0 5%
+    height 65vh
+    overflow-x hidden
+    overflow-y scroll
+    @media screen and (max-width: 768px)
+      height 75vh
+    .terms-and-conditions
+      padding-right 50px !important
+  .terms-and-conditions-modal-footer
+    height 5vh
+    .close
+      font-family "Lato"
+      width 100%
+      height 100%
+      background var(--primary-color)
+      color var(--secondary-color)
+      border 1px solid var(--dark-primary-color)
+      border-bottom-left-radius 4px
+      border-bottom-right-radius 4px
+      &:active, &:focus
+        outline none

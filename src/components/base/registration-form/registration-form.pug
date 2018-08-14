@@ -1,0 +1,53 @@
+form.registration-form(@submit.prevent="register")
+  .loading-screen(v-if="isLoading")
+    spinner(size="huge" line-fg-color="#e60000" line-bg-color="#ffffff")
+  .form(:class="{ loading: isLoading }")
+    h1 Sign Up
+    .form-group
+      input.form-input(type="text" placeholder="First Name" v-model="registrationFormFields.fname")
+    p.form-error(v-for="error in registrationFormErrors.fname") {{ error }}
+    .form-group
+      input.form-input(type="text" placeholder="Last Name" v-model="registrationFormFields.lname")
+    p.form-error(v-for="error in registrationFormErrors.lname") {{ error }}
+    .form-group
+      label.label-for-input(for="birthday") Birthday
+      flatPickr.form-input(type="text" placeholder="Birthday" v-model="registrationFormFields.birthday" :config="config")
+    p.form-error(v-for="error in registrationFormErrors.birthday") {{ error }}
+    .form-group
+      input.form-input(type="email" placeholder="Email Address" v-model="registrationFormFields.email")
+    p.form-error(v-for="error in registrationFormErrors.email") {{ error }}
+    .form-group
+      input.form-input(type="password" placeholder="Password" v-model="registrationFormFields.password")
+    p.form-error(v-for="error in registrationFormErrors.password") {{ error }}
+    .form-group
+      .avatar-form-container
+        .avatar-label-header
+          h3 Select Avatar
+        .avatar-select-container
+          .avatar
+            input.avatar-radio(type="radio", name="avatar" value="male" id="kingBeetle" v-model="registrationFormFields.gender")
+            label.avatarLabel(id="kingBeetleLabel" for="kingBeetle")
+            p.caption King Beetle
+          .avatar
+            input.avatar-radio(type="radio", name="avatar" value="female" id="queenBee" v-model="registrationFormFields.gender")
+            label.avatarLabel(id="queenBeeLabel" for="queenBee")
+            p.caption Queen Bee
+          .avatar
+            input.avatar-radio(type="radio", name="avatar" value="ambiguous" id="butterfly" v-model="registrationFormFields.gender")
+            label.avatarLabel(id="butterflyLabel" for="butterfly")
+            p.caption Butterfly
+    p.form-error(v-for="error in registrationFormErrors.gender") {{ error }}
+    .form-group
+      .terms-conditions-form-container
+        input.terms-checkbox(type="checkbox" name="terms" id="terms" v-model="registrationFormFields.has_read_tac")
+        label(for="terms")
+        p(@click="termsAndConditionsClick")
+          | I've read and agree with the 
+          span.modal-openner(@click="openModal") terms and conditions
+    p.form-error(v-for="error in registrationFormErrors.has_read_tac") {{ error }}
+    .form-group
+      button(type="submit" class="submit") Sign-Up
+  termsAndConditionsModal
+  sweetModal(icon="success" ref="registrationSuccess" class="registration-success-alert")
+    h1 Registration Success
+    h2 Redirecting to Login Page...
