@@ -1,3 +1,4 @@
+
 # MyBrandBug
 
 > Web Application for MyBrandBug
@@ -77,3 +78,4 @@ This Application is built with:
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
 Check out the live website at [MyBrandBug.com](http://mybrandbug.com)
+
